@@ -1,0 +1,11 @@
+/* DashboardHome.css — Xevion Dark Theme */
+/* All shared dashboard styles live in dashboard.css.
+   This file adds page-specific overrides for DashboardHome. */
+
+.dashboard-home {
+  animation: fadeInUp 0.4s ease both;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

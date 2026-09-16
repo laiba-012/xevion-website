@@ -1,0 +1,249 @@
+/* ==========================
+Users Page
+========================== */
+
+.users-page{
+    padding:30px;
+    background:#f5f7fb;
+    min-height:100vh;
+}
+
+/* ==========================
+Header
+========================== */
+
+.page-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.page-header h1{
+    font-size:32px;
+    color:#111827;
+    font-weight:700;
+}
+
+.page-header p{
+    margin-top:6px;
+    color:#6b7280;
+    font-size:15px;
+}
+
+/* ==========================
+Search
+========================== */
+
+.search-box{
+    width:340px;
+    height:52px;
+    background:white;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    padding:0 18px;
+    gap:10px;
+    box-shadow:0 10px 25px rgba(0,0,0,.06);
+}
+
+.search-box svg{
+    color:#2563eb;
+    font-size:18px;
+}
+
+.search-box input{
+    width:100%;
+    border:none;
+    outline:none;
+    font-size:15px;
+    background:transparent;
+}
+
+/* ==========================
+Cards
+========================== */
+
+.user-cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+    margin-bottom:30px;
+}
+
+.user-card{
+    background:white;
+    border-radius:18px;
+    padding:28px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.06);
+    transition:.3s;
+}
+
+.user-card:hover{
+    transform:translateY(-6px);
+}
+
+.card-icon{
+    font-size:45px;
+    color:#2563eb;
+}
+
+.card-icon.green{
+    color:#16a34a;
+}
+
+.card-icon.red{
+    color:#dc2626;
+}
+
+.user-card h2{
+    font-size:34px;
+    margin-bottom:6px;
+    color:#111827;
+}
+
+.user-card span{
+    color:#6b7280;
+}
+
+/* ==========================
+Table
+========================== */
+
+.table-wrapper{
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.06);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:#2563eb;
+}
+
+thead th{
+    color:white;
+    padding:18px;
+    font-size:15px;
+    text-align:left;
+}
+
+tbody td{
+    padding:18px;
+    border-bottom:1px solid #f1f1f1;
+    color:#374151;
+}
+
+tbody tr:hover{
+    background:#f8fafc;
+}
+
+/* ==========================
+Badges
+========================== */
+
+.role{
+    background:#dbeafe;
+    color:#2563eb;
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.active{
+    background:#dcfce7;
+    color:#15803d;
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.blocked{
+    background:#fee2e2;
+    color:#dc2626;
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+}
+
+/* ==========================
+Buttons
+========================== */
+
+.status-btn{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:10px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    margin-right:10px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.status-btn:hover{
+    background:#1d4ed8;
+}
+
+.delete-btn{
+    background:#dc2626;
+    color:white;
+    border:none;
+    width:42px;
+    height:42px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.delete-btn:hover{
+    background:#b91c1c;
+}
+
+/* ==========================
+Responsive
+========================== */
+
+@media(max-width:1100px){
+
+.user-cards{
+grid-template-columns:1fr;
+}
+
+.page-header{
+flex-direction:column;
+align-items:flex-start;
+gap:20px;
+}
+
+.search-box{
+width:100%;
+}
+
+}
+
+@media(max-width:768px){
+
+.users-page{
+padding:18px;
+}
+
+table{
+display:block;
+overflow-x:auto;
+white-space:nowrap;
+}
+
+}

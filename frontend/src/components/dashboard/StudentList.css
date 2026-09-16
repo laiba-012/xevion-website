@@ -1,0 +1,237 @@
+/* ==============================
+PAGE
+============================== */
+
+.student-page{
+    padding:30px;
+    background:#f5f7fb;
+    min-height:100vh;
+}
+
+/* ==============================
+HEADER
+============================== */
+
+.page-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.page-header h1{
+    font-size:32px;
+    color:#111827;
+    margin-bottom:6px;
+}
+
+.page-header p{
+    color:#6b7280;
+}
+
+.header-actions{
+    display:flex;
+    gap:15px;
+}
+
+.search-input{
+    width:320px;
+    height:50px;
+    border:none;
+    outline:none;
+    border-radius:12px;
+    background:white;
+    padding:0 18px;
+    box-shadow:0 8px 20px rgba(0,0,0,.06);
+    font-size:15px;
+}
+
+/* ==============================
+CARDS
+============================== */
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+    margin-bottom:30px;
+}
+
+.stat-card{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 10px 20px rgba(0,0,0,.06);
+}
+
+.stat-card h2{
+    font-size:34px;
+    color:#111827;
+}
+
+.stat-card p{
+    margin-top:8px;
+    color:#6b7280;
+}
+
+.active-card{
+    border-left:6px solid #22c55e;
+}
+
+.blocked-card{
+    border-left:6px solid #ef4444;
+}
+
+/* ==============================
+TABLE
+============================== */
+
+.table-wrapper{
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 20px rgba(0,0,0,.06);
+}
+
+.student-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.student-table thead{
+    background:#2563eb;
+}
+
+.student-table th{
+    color:white;
+    text-align:left;
+    padding:18px;
+}
+
+.student-table td{
+    padding:18px;
+    border-bottom:1px solid #f3f4f6;
+}
+
+.student-table tbody tr:hover{
+    background:#f9fafb;
+}
+
+/* ==============================
+IMAGE
+============================== */
+
+.profile{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+/* ==============================
+STATUS
+============================== */
+
+.activeBadge{
+    background:#dcfce7;
+    color:#15803d;
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.blockedBadge{
+    background:#fee2e2;
+    color:#dc2626;
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+}
+
+/* ==============================
+BUTTONS
+============================== */
+
+.actionBtns{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.viewBtn,
+.statusBtn,
+.deleteBtn{
+    border:none;
+    padding:10px 16px;
+    color:white;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+    transition:.3s;
+}
+
+.viewBtn{
+    background:#2563eb;
+}
+
+.viewBtn:hover{
+    background:#1d4ed8;
+}
+
+.statusBtn{
+    background:#f59e0b;
+}
+
+.statusBtn:hover{
+    background:#d97706;
+}
+
+.deleteBtn{
+    background:#dc2626;
+}
+
+.deleteBtn:hover{
+    background:#b91c1c;
+}
+
+/* ==============================
+LOADING
+============================== */
+
+.loading{
+    text-align:center;
+    padding:35px;
+    color:#6b7280;
+}
+
+/* ==============================
+RESPONSIVE
+============================== */
+
+@media(max-width:1100px){
+
+.page-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:20px;
+}
+
+.search-input{
+    width:100%;
+}
+
+.stats-grid{
+    grid-template-columns:1fr;
+}
+
+.table-wrapper{
+    overflow:auto;
+}
+
+.student-table{
+    min-width:1000px;
+}
+
+}

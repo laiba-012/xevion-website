@@ -1,0 +1,472 @@
+/* ===================================
+   Page
+=================================== */
+
+.courses-page{
+    padding:30px;
+    background:#f5f7fb;
+    min-height:100vh;
+}
+
+/* ===================================
+Header
+=================================== */
+
+.page-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.page-header h1{
+    font-size:32px;
+    color:#111827;
+    margin-bottom:6px;
+}
+
+.page-header p{
+    color:#6b7280;
+}
+
+/* ===================================
+Search
+=================================== */
+
+.search-box{
+    width:340px;
+    height:52px;
+    background:white;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:0 18px;
+    box-shadow:0 10px 20px rgba(0,0,0,.06);
+}
+
+.search-box svg{
+    color:#2563eb;
+}
+
+.search-box input{
+    width:100%;
+    border:none;
+    outline:none;
+    background:none;
+    font-size:15px;
+}
+
+/* ===================================
+Cards
+=================================== */
+
+.course-cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:25px;
+
+    margin-bottom:30px;
+
+}
+
+.course-card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.06);
+
+    transition:.3s;
+
+}
+
+.course-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.card-icon{
+
+    font-size:42px;
+
+    color:#2563eb;
+
+}
+
+.course-card h2{
+
+    font-size:32px;
+
+    color:#111827;
+
+    margin-bottom:6px;
+
+}
+
+.course-card p{
+
+    color:#6b7280;
+
+}
+
+.published{
+
+    border-left:5px solid #16a34a;
+
+}
+
+.pending{
+
+    border-left:5px solid #f59e0b;
+
+}
+
+.rejected{
+
+    border-left:5px solid #dc2626;
+
+}
+
+/* ===================================
+Table
+=================================== */
+
+.table-wrapper{
+
+    background:white;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.06);
+
+}
+
+.course-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.course-table thead{
+
+    background:#2563eb;
+
+}
+
+.course-table th{
+
+    color:white;
+
+    padding:18px;
+
+    text-align:left;
+
+    font-size:14px;
+
+}
+
+.course-table td{
+
+    padding:18px;
+
+    border-bottom:1px solid #f1f1f1;
+
+    vertical-align:middle;
+
+}
+
+.course-table tbody tr:hover{
+
+    background:#f9fafb;
+
+}
+
+/* ===================================
+Thumbnail
+=================================== */
+
+.thumb{
+
+    width:70px;
+
+    height:50px;
+
+    object-fit:cover;
+
+    border-radius:10px;
+
+}
+
+/* ===================================
+Course Info
+=================================== */
+
+.course-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.course-info strong{
+
+    color:#111827;
+
+}
+
+.course-info small{
+
+    color:#6b7280;
+
+    margin-top:5px;
+
+}
+
+/* ===================================
+Badges
+=================================== */
+
+.level{
+
+    background:#e0ecff;
+
+    color:#2563eb;
+
+    padding:6px 14px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.status{
+
+    padding:6px 14px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.status.published{
+
+    background:#dcfce7;
+
+    color:#16a34a;
+
+}
+
+.status.pending{
+
+    background:#fef3c7;
+
+    color:#d97706;
+
+}
+
+.status.rejected{
+
+    background:#fee2e2;
+
+    color:#dc2626;
+
+}
+
+/* ===================================
+Buttons
+=================================== */
+
+.action-buttons{
+
+    display:flex;
+
+    gap:8px;
+
+    flex-wrap:wrap;
+
+}
+
+.edit-btn{
+
+    width:40px;
+
+    height:40px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#2563eb;
+
+    color:white;
+
+    cursor:pointer;
+
+}
+
+.approve-btn{
+
+    border:none;
+
+    padding:10px 15px;
+
+    background:#16a34a;
+
+    color:white;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+}
+
+.reject-btn{
+
+    border:none;
+
+    padding:10px 15px;
+
+    background:#f59e0b;
+
+    color:white;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+}
+
+.delete-btn{
+
+    width:40px;
+
+    height:40px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#dc2626;
+
+    color:white;
+
+    cursor:pointer;
+
+}
+
+.edit-btn:hover{
+
+    background:#1d4ed8;
+
+}
+
+.approve-btn:hover{
+
+    background:#15803d;
+
+}
+
+.reject-btn:hover{
+
+    background:#d97706;
+
+}
+
+.delete-btn:hover{
+
+    background:#b91c1c;
+
+}
+
+/* ===================================
+Loading
+=================================== */
+
+.loading{
+
+    text-align:center;
+
+    padding:35px;
+
+    color:#6b7280;
+
+    font-size:16px;
+
+}
+
+/* ===================================
+Responsive
+=================================== */
+
+@media(max-width:1200px){
+
+.course-cards{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.page-header{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+gap:20px;
+
+}
+
+.search-box{
+
+width:100%;
+
+}
+
+.course-cards{
+
+grid-template-columns:1fr;
+
+}
+
+.table-wrapper{
+
+overflow:auto;
+
+}
+
+.course-table{
+
+min-width:1100px;
+
+}
+
+}
