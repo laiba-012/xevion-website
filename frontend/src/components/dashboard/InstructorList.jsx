@@ -282,7 +282,7 @@ const InstructorList = () => {
 
                           ?
 
-                          `http://localhost:5000/uploads/${item.profileImage}`
+                          `https://xevion-website.vercel.app/${item.profileImage}`
 
                           :
 

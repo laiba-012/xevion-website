@@ -261,7 +261,7 @@ const StudentList = () => {
 
                         ?
 
-                        `http://localhost:5000/uploads/${student.profileImage}`
+                        `https://xevion-website.vercel.app${student.profileImage}`
 
                         :
 
