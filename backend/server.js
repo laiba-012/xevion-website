@@ -31,6 +31,7 @@ app.use(
     origin: [
       "http://localhost:5173",
       "http://localhost:5174",
+      "https://xevion-website-ui4f.vercel.app",
     ],
     credentials: true,
   })
