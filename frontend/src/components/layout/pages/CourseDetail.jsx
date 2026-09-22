@@ -56,7 +56,7 @@ const FALLBACK_COURSES = {
     instructor: { name: 'Dr. Sarah Vance', email: 'instructor@xevion.com' },
     description: 'Hands-on practical exploitation, vulnerability scanning, bug bounty methodology, privilege escalation, and active directory penetration testing.',
     duration: '10 Weeks',
-    price: 49,
+    price: 0,
     thumbnail: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80',
     modules: [
       {
@@ -85,7 +85,7 @@ const FALLBACK_COURSES = {
     instructor: { name: 'Alex Mercer', email: 'alex@xevion.com' },
     description: 'Build enterprise-grade full-stack web applications with modern reactive UI, Express microservices, MongoDB Atlas, and JWT-authenticated zero-trust security.',
     duration: '12 Weeks',
-    price: 39,
+    price: 0,
     thumbnail: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80',
     modules: [
       {
@@ -106,7 +106,7 @@ const FALLBACK_COURSES = {
     instructor: { name: 'Prof. David Chen', email: 'chen@xevion.com' },
     description: 'Deep dive into artificial neural networks, transformers, reinforcement learning, and deploying secure AI models in enterprise environments.',
     duration: '14 Weeks',
-    price: 89,
+    price: 0,
     thumbnail: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80',
     modules: [
       {
@@ -126,7 +126,7 @@ const FALLBACK_COURSES = {
     instructor: { name: 'Marcus Brody', email: 'brody@xevion.com' },
     description: 'Deploy, monitor, and harden containerized microservices across AWS, GCP, and Kubernetes clusters with automated zero-trust compliance.',
     duration: '6 Weeks',
-    price: 59,
+    price: 0,
     thumbnail: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80',
     modules: [
       {
@@ -146,7 +146,7 @@ const FALLBACK_COURSES = {
     instructor: { name: 'Elena Rostova', email: 'elena@xevion.com' },
     description: 'Dissect real malware samples in secure sandboxes, perform x86/x64 assembly disassembly, Ghidra decompilation, and dynamic memory analysis.',
     duration: '10 Weeks',
-    price: 79,
+    price: 0,
     thumbnail: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80',
     modules: [
       {
@@ -179,7 +179,7 @@ const CourseDetail = () => {
     try {
       const res = await api.get(`/courses/${id}`);
       if (res.data?.success && res.data?.course) {
-        setCourse(res.data.course);
+        setCourse({ ...res.data.course, price: 0 });
         return;
       }
     } catch (err) {
@@ -596,16 +596,14 @@ const CourseDetail = () => {
               <span style={{
                 fontSize: 34,
                 fontWeight: 800,
-                color: '#f8fafc',
+                color: '#10b981',
                 fontFamily: 'Space Grotesk, sans-serif'
               }}>
-                {course.price === 0 ? 'FREE' : `$${course.price}`}
+                FREE
               </span>
-              {course.price > 0 && (
-                <span style={{ color: '#64748b', textDecoration: 'line-through', fontSize: 16 }}>
-                  ${course.price + 50}
-                </span>
-              )}
+              <span style={{ color: '#64748b', textDecoration: 'line-through', fontSize: 16 }}>
+                ${course.price > 0 ? course.price + 50 : 99}
+              </span>
             </div>
 
             {/* Feedback Message */}
@@ -669,28 +667,6 @@ const CourseDetail = () => {
                   <span>Start Learning / Go to Player →</span>
                 </button>
               </div>
-            ) : course.price > 0 ? (
-              <button
-                onClick={() => navigate(`/checkout/${course._id}`)}
-                style={{
-                  width: '100%',
-                  padding: '16px',
-                  background: 'linear-gradient(135deg, #0084ff 0%, #0052cc 100%)',
-                  border: 'none',
-                  borderRadius: 12,
-                  color: '#fff',
-                  fontSize: 16,
-                  fontWeight: 700,
-                  cursor: 'pointer',
-                  boxShadow: '0 8px 30px rgba(0, 132, 255, 0.4)',
-                  transition: 'all 0.3s',
-                  marginBottom: 16
-                }}
-                onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
-                onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
-              >
-                Buy Course — ${course.price}
-              </button>
             ) : (
               <button
                 onClick={enrollCourse}

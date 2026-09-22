@@ -88,7 +88,7 @@ router.get('/me', async (req, res) => {
       return res.status(401).json({ success: false, message: 'No token' });
     }
 
-    const decoded = jwt.verify(token, 'secretkey');
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'secret');
     const user = await User.findById(decoded.id).select('-password');
     
     if (!user) {

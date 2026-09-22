@@ -20,6 +20,7 @@ const lessonRoutes = require("./routes/lessonRoutes");
 const enrollmentRoutes = require("./routes/enrollmentroutes");
 const statsRoutes = require("./routes/stats.routes");
 const userRoutes = require("./routes/user.routes");
+const blogRoutes = require("./routes/blogRoutes");
 
 // ===============================
 // Middleware
@@ -66,6 +67,7 @@ app.use("/api/lessons", lessonRoutes);
 app.use("/api/enrollments", enrollmentRoutes);
 app.use("/api/stats", statsRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/blogs", blogRoutes);
 
 // ===============================
 // Health Route

@@ -86,10 +86,9 @@ exports.getUsers = async (req, res) => {
   try {
 
     const users = await User.find({
-      role: "student",
+      role: { $in: ["student", "user"] },
     })
       .select("-password")
-      .populate("courses", "title")
       .sort({ createdAt: -1 });
 
     res.json({

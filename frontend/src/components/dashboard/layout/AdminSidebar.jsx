@@ -22,18 +22,18 @@ import {
 const menuItems = [
   {
     title: "Dashboard",
-    path: "/dashboard/admin",
+    path: "/admin",
     icon: <MdDashboard />,
     end: true,
   },
   {
     title: "Users",
-    path: "/dashboard/admin/users",
+    path: "/admin/users",
     icon: <MdPeople />,
   },
   {
     title: "Instructors",
-    path: "/dashboard/admin/create-instructor",
+    path: "/admin/create-instructor",
     icon: <MdSchool />,
   },
   {
@@ -41,29 +41,29 @@ const menuItems = [
     path: null,
     icon: <MdMenuBook />,
     children: [
-      { title: "All Courses", path: "/dashboard/admin/courses", icon: <MdAutoStories /> },
-      { title: "Create Course", path: "/dashboard/admin/create-course", icon: <MdAddCircle /> },
-      { title: "Modules", path: "/dashboard/admin/modules", icon: <MdViewModule /> },
+      { title: "All Courses", path: "/admin/courses", icon: <MdAutoStories /> },
+      { title: "Create Course", path: "/admin/create-course", icon: <MdAddCircle /> },
+      { title: "Modules", path: "/admin/modules", icon: <MdViewModule /> },
     ],
   },
   {
     title: "Blogs",
-    path: "/dashboard/admin/blogs",
+    path: "/admin/blogs",
     icon: <MdArticle />,
   },
   {
     title: "Events",
-    path: "/dashboard/admin/events",
+    path: "/admin/events",
     icon: <MdEvent />,
   },
   {
     title: "Sponsors",
-    path: "/dashboard/admin/sponsors",
+    path: "/admin/sponsors",
     icon: <MdHandshake />,
   },
   {
     title: "Settings",
-    path: "/dashboard/admin/settings",
+    path: "/admin/settings",
     icon: <MdSettings />,
   },
 ];
@@ -75,7 +75,7 @@ const AdminSidebar = () => {
 
   const handleLogout = () => {
     if (logout) logout();
-    navigate("/login");
+    navigate("/admin/login");
   };
 
   return (

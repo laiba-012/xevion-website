@@ -61,7 +61,12 @@ const UserDashboard = ({ initialTab = "overview" }) => {
       navigate("/login");
       return;
     }
-    if (user.role === "admin" || user.role === "instructor") {
+    const isAdmin = user.role === "admin" || user.email === "laibafatima0116@gmail.com" || user.email === "admin@xevion.com";
+    if (isAdmin) {
+      navigate("/admin");
+      return;
+    }
+    if (user.role === "instructor") {
       navigate("/dashboard/instructor");
       return;
     }

@@ -63,6 +63,7 @@ const DEFAULT_COURSES = [
 
 const Navbar = () => {
   const { user } = useAuth();
+  const isAdmin = user?.role === 'admin' || user?.email === 'laibafatima0116@gmail.com' || user?.email === 'admin@xevion.com';
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
@@ -125,33 +126,35 @@ const Navbar = () => {
         boxShadow: scrolled ? '0 4px 30px rgba(0,0,0,0.6)' : 'none',
       }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 76 }}>
+          <div className="xv-navbar-grid" style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', height: 76 }}>
 
-            {/* Logo */}
-            <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-              <img
-                src="/xevion-logo-cropped.png"
-                alt="Xevion"
-                style={{
-                  height: 58,
-                  width: 'auto',
-                  borderRadius: 8,
-                  filter: 'drop-shadow(0 0 10px rgba(0, 132, 255,0.35))',
-                  transition: 'filter 0.3s, transform 0.3s',
-                }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.filter = 'drop-shadow(0 0 18px rgba(0, 132, 255,0.7))';
-                  e.currentTarget.style.transform = 'scale(1.02)';
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.filter = 'drop-shadow(0 0 10px rgba(0, 132, 255,0.35))';
-                  e.currentTarget.style.transform = 'scale(1)';
-                }}
-              />
-            </Link>
+            {/* Logo (Left) */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
+              <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+                <img
+                  src="/xevion-logo-cropped.png"
+                  alt="Xevion"
+                  style={{
+                    height: 58,
+                    width: 'auto',
+                    borderRadius: 8,
+                    filter: 'drop-shadow(0 0 10px rgba(0, 132, 255,0.35))',
+                    transition: 'filter 0.3s, transform 0.3s',
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.filter = 'drop-shadow(0 0 18px rgba(0, 132, 255,0.7))';
+                    e.currentTarget.style.transform = 'scale(1.02)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.filter = 'drop-shadow(0 0 10px rgba(0, 132, 255,0.35))';
+                    e.currentTarget.style.transform = 'scale(1)';
+                  }}
+                />
+              </Link>
+            </div>
 
-            {/* Desktop Nav */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }} className="desktop-nav">
+            {/* Desktop Nav (Dead Center) */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }} className="desktop-nav">
               <NavLink to="/" style={({ isActive }) => linkStyle(isActive)}>Home</NavLink>
 
               {/* About Dropdown */}
@@ -189,134 +192,8 @@ const Navbar = () => {
               <NavLink to="/contact" style={({ isActive }) => linkStyle(isActive)}>Contact</NavLink>
             </div>
 
-            {/* Right Side */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              {user ? (
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                  <Link
-                    to="/dashboard"
-                    style={{
-                      padding: '7px 14px',
-                      background: 'rgba(0, 132, 255, 0.1)',
-                      border: '1px solid rgba(0, 132, 255, 0.3)',
-                      borderRadius: 8,
-                      color: '#38bdf8',
-                      textDecoration: 'none',
-                      fontSize: 13,
-                      fontWeight: 600,
-                      transition: 'all 0.2s',
-                    }}
-                    onMouseEnter={e => { e.currentTarget.style.background = 'rgba(0, 132, 255, 0.2)'; }}
-                    onMouseLeave={e => { e.currentTarget.style.background = 'rgba(0, 132, 255, 0.1)'; }}
-                  >
-                    Dashboard
-                  </Link>
-
-                  <Link
-                    to="/profile"
-                    title="View & Edit Profile"
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 8,
-                      padding: '4px 12px 4px 5px',
-                      background: 'rgba(10, 20, 40, 0.8)',
-                      border: '1px solid rgba(0, 132, 255, 0.35)',
-                      borderRadius: 30,
-                      textDecoration: 'none',
-                      transition: 'all 0.2s',
-                    }}
-                    onMouseEnter={e => {
-                      e.currentTarget.style.borderColor = '#0084ff';
-                      e.currentTarget.style.boxShadow = '0 0 16px rgba(0, 132, 255, 0.35)';
-                    }}
-                    onMouseLeave={e => {
-                      e.currentTarget.style.borderColor = 'rgba(0, 132, 255, 0.35)';
-                      e.currentTarget.style.boxShadow = 'none';
-                    }}
-                  >
-                    <div style={{
-                      width: 32,
-                      height: 32,
-                      borderRadius: '50%',
-                      background: 'linear-gradient(135deg, #0084ff, #0052cc)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: '#ffffff',
-                      fontWeight: 800,
-                      fontSize: 13,
-                      overflow: 'hidden',
-                      border: '1.5px solid #0084ff',
-                      boxShadow: '0 0 10px rgba(0, 132, 255, 0.4)',
-                      flexShrink: 0
-                    }}>
-                      {user.image ? (
-                        <img
-                          src={user.image}
-                          alt={user.name || 'User'}
-                          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                          onError={e => { e.currentTarget.style.display = 'none'; }}
-                        />
-                      ) : (
-                        user.name?.charAt(0).toUpperCase() || 'U'
-                      )}
-                    </div>
-                    <span style={{
-                      color: '#e2e8f0',
-                      fontSize: 13,
-                      fontWeight: 600,
-                      maxWidth: 110,
-                      whiteSpace: 'nowrap',
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis'
-                    }}>
-                      {user.name || 'Profile'}
-                    </span>
-                    <span style={{
-                      width: 7,
-                      height: 7,
-                      borderRadius: '50%',
-                      background: '#10b981',
-                      boxShadow: '0 0 6px #10b981'
-                    }} />
-                  </Link>
-                </div>
-              ) : (
-                <>
-                  <Link to="/login" style={{
-                    padding: '8px 20px',
-                    background: 'transparent',
-                    border: '1px solid rgba(0, 132, 255,0.3)',
-                    borderRadius: 8,
-                    color: '#0084ff',
-                    textDecoration: 'none',
-                    fontSize: 13,
-                    fontWeight: 500,
-                    transition: 'all 0.2s',
-                  }}
-                    onMouseEnter={e => { e.currentTarget.style.background = 'rgba(0, 132, 255,0.1)'; }}
-                    onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
-                  >Log In</Link>
-
-                  <Link to="/signup" style={{
-                    padding: '8px 20px',
-                    background: 'linear-gradient(135deg, #0084ff, #0052cc)',
-                    border: 'none',
-                    borderRadius: 8,
-                    color: '#050b14',
-                    textDecoration: 'none',
-                    fontSize: 13,
-                    fontWeight: 700,
-                    boxShadow: '0 0 18px rgba(0, 132, 255,0.3)',
-                    transition: 'all 0.2s',
-                  }}
-                    onMouseEnter={e => e.currentTarget.style.boxShadow = '0 0 25px rgba(0, 132, 255,0.6)'}
-                    onMouseLeave={e => e.currentTarget.style.boxShadow = '0 0 18px rgba(0, 132, 255,0.3)'}
-                  >Sign Up</Link>
-                </>
-              )}
-
+            {/* Right Side (Counter-balance for center layout, hamburger on mobile) */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
               <button onClick={() => setMenuOpen(!menuOpen)} style={{
                 display: 'none',
                 background: 'none',
@@ -341,7 +218,7 @@ const Navbar = () => {
                 ['/', 'Home'], ['/about', 'About'], ['/team', 'Team'],
                 ['/sponsors', 'Sponsors'], ['/courses', 'Courses'],
                 ['/events', 'Events'], ['/blog', 'Blog'],
-                ['/contact', 'Contact'], ['/login', 'Log In'], ['/signup', 'Sign Up'],
+                ['/contact', 'Contact'],
               ].map(([path, label]) => (
                 <NavLink key={path} to={path} style={({ isActive }) => ({
                   display: 'block',
@@ -663,6 +540,10 @@ const Navbar = () => {
         .xv-drawer-list::-webkit-scrollbar-thumb { background: rgba(0, 132, 255,0.2); border-radius: 4px; }
 
         @media (max-width: 900px) {
+          .xv-navbar-grid {
+            display: flex !important;
+            justify-content: space-between !important;
+          }
           .desktop-nav { display: none !important; }
           .hamburger { display: block !important; }
         }

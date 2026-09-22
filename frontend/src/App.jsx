@@ -98,7 +98,7 @@
 
 
 // src/App.jsx
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/layout/Layout";
@@ -122,6 +122,7 @@ import CoursePlayer from "./components/layout/pages/CoursePlayer";
 // DASHBOARD PAGES
 import UserDashboard from "./components/dashboard/UserDashboard";
 import AdminDashboard from "./components/dashboard/AdminDashboard";
+import AdminLogin from "./components/dashboard/AdminLogin";
 import InstructorDashboard from "./components/dashboard/InstructorDashboard";
 
 // ADMIN MANAGEMENT PAGES - ✅ Admin Only
@@ -187,39 +188,32 @@ function App() {
             </ProtectedRoute>
           } />
           
-          {/* ✅ ADMIN ONLY - Sirf Admin Access */}
-         <Route
-  path="/dashboard/admin"
-  element={
-    <ProtectedRoute roles={["admin"]}>
-      <AdminDashboard />
-    </ProtectedRoute>
-  }
->
-  <Route index element={<DashboardHome />} />
+          {/* ✅ DEDICATED ADMIN AUTHENTICATION */}
+          <Route path="/admin/login" element={<AdminLogin />} />
 
-  <Route path="users" element={<AdminUsers />} />
+          {/* ✅ DIRECT ADMIN ROUTE: /admin (Protected by Admin Auth) */}
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute roles={["admin"]}>
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<DashboardHome />} />
+            <Route path="users" element={<AdminUsers />} />
+            <Route path="courses" element={<AdminCourses />} />
+            <Route path="blogs" element={<AdminBlogs />} />
+            <Route path="events" element={<AdminEvents />} />
+            <Route path="sponsors" element={<AdminSponsors />} />
+            <Route path="settings" element={<AdminSettings />} />
+            <Route path="create-instructor" element={<CreateInstructor />} />
+            <Route path="create-course" element={<CreateCourse />} />
+          </Route>
 
-  <Route path="courses" element={<AdminCourses />} />
-
-  <Route path="blogs" element={<AdminBlogs />} />
-
-  <Route path="events" element={<AdminEvents />} />
-
-  <Route path="sponsors" element={<AdminSponsors />} />
-
-  <Route path="settings" element={<AdminSettings />} />
-
-  <Route
-    path="create-instructor"
-    element={<CreateInstructor />}
-  />
-
-  <Route
-    path="create-course"
-    element={<CreateCourse />}
-  />
-</Route>
+          {/* Backward compatibility: redirect /dashboard/admin -> /admin */}
+          <Route path="/dashboard/admin" element={<Navigate to="/admin" replace />} />
+          <Route path="/dashboard/admin/*" element={<Navigate to="/admin" replace />} />
           
           {/* ✅ INSTRUCTOR + ADMIN */}
          <Route

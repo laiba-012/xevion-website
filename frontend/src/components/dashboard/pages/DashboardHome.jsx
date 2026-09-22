@@ -54,7 +54,7 @@ const DashboardHome = () => {
       <div className="dashboard-header">
         <div>
           <h1>Dashboard Overview</h1>
-          <p>Welcome back, Admin 👋 — Your Xevion platform at a glance</p>
+          <p>Welcome back, Admin — Your Xevion platform at a glance</p>
         </div>
         <button className="create-btn"><FaPlus /> Create New</button>
       </div>

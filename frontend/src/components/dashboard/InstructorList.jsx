@@ -117,7 +117,7 @@ const InstructorList = () => {
             className="addBtn"
 
             onClick={() =>
-              navigate("/dashboard/admin/create-instructor")
+              navigate("/admin/create-instructor")
             }
 
           >

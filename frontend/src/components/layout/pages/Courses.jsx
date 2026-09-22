@@ -25,7 +25,7 @@ const COMPLETE_COURSES = [
     instructor: { name: 'Dr. Sarah Vance', title: 'Lead Malware Researcher' },
     description: 'Dissect real malware samples in secure sandboxes, perform x86/x64 assembly disassembly, Ghidra decompilation, and dynamic memory analysis.',
     duration: '10 Weeks',
-    price: 79,
+    price: 0,
     originalPrice: 129,
     thumbnail: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80',
     modules: [
@@ -107,7 +107,7 @@ const COMPLETE_COURSES = [
     instructor: { name: 'Alex Mercer', title: 'Senior Red Team Operator' },
     description: 'Hands-on practical exploitation, vulnerability scanning, bug bounty methodology, privilege escalation, and active directory penetration testing.',
     duration: '10 Weeks',
-    price: 49,
+    price: 0,
     originalPrice: 99,
     thumbnail: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80',
     modules: [
@@ -143,7 +143,7 @@ const COMPLETE_COURSES = [
     instructor: { name: 'Rachel Lee', title: 'Staff Software Architect' },
     description: 'Build enterprise-grade full-stack web applications with modern reactive UI, Express microservices, MongoDB Atlas, and JWT-authenticated zero-trust security.',
     duration: '12 Weeks',
-    price: 39,
+    price: 0,
     originalPrice: 89,
     thumbnail: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80',
     modules: [
@@ -179,7 +179,7 @@ const COMPLETE_COURSES = [
     instructor: { name: 'Prof. David Chen', title: 'AI Research Scientist' },
     description: 'Deep dive into artificial neural networks, transformers, reinforcement learning, and deploying secure AI models in enterprise environments.',
     duration: '14 Weeks',
-    price: 89,
+    price: 0,
     originalPrice: 149,
     thumbnail: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80',
     modules: [
@@ -215,7 +215,7 @@ const COMPLETE_COURSES = [
     instructor: { name: 'Marcus Brody', title: 'Principal DevSecOps Engineer' },
     description: 'Deploy, monitor, and harden containerized microservices across AWS, GCP, and Kubernetes clusters with automated zero-trust compliance.',
     duration: '6 Weeks',
-    price: 59,
+    price: 0,
     originalPrice: 119,
     thumbnail: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80',
     modules: [
@@ -277,7 +277,8 @@ export default function Courses() {
 
             return {
               ...bc,
-              originalPrice: bc.price === 0 ? 49 : Math.round(bc.price * 1.6),
+              price: 0,
+              originalPrice: match?.originalPrice || 99,
               modules: bc.modules?.length > 0 ? bc.modules : match?.modules || COMPLETE_COURSES[0].modules,
               outcomes: match?.outcomes || [
                 'Production-grade practical labs',
@@ -675,19 +676,19 @@ export default function Courses() {
                   {course.title}
                 </h3>
 
-                {/* Price Row ($79 $129) */}
+                {/* Price Row */}
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, marginBottom: 14 }}>
                   <span
                     style={{
                       fontSize: 28,
                       fontWeight: 800,
-                      color: '#ffffff',
+                      color: '#10b981',
                       fontFamily: 'Space Grotesk, sans-serif',
                     }}
                   >
-                    {course.price === 0 ? 'FREE' : `$${course.price}`}
+                    FREE
                   </span>
-                  {course.originalPrice && course.originalPrice > course.price && (
+                  {course.originalPrice && (
                     <span
                       style={{
                         fontSize: 15,
@@ -738,7 +739,7 @@ export default function Courses() {
                   onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 6px 24px rgba(0, 132, 255, 0.55)')}
                   onMouseLeave={(e) => (e.currentTarget.style.boxShadow = '0 4px 18px rgba(0, 132, 255, 0.3)')}
                 >
-                  <span>{course.price === 0 ? 'View Free Course' : `View Course — $${course.price}`}</span>
+                  <span>Enroll Free →</span>
                   <MdArrowForward style={{ fontSize: 16 }} />
                 </button>
 
@@ -991,12 +992,12 @@ export default function Courses() {
                 }}
               >
                 <div>
-                  <div style={{ fontSize: 11, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                    Tuition Fee
+                  <div style={{ fontSize: 11, color: '#10b981', textTransform: 'uppercase', letterSpacing: '0.04em', fontWeight: 700 }}>
+                    ✓ Free Access
                   </div>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
-                    <span style={{ fontSize: 26, fontWeight: 800, color: '#fff', fontFamily: 'Space Grotesk, sans-serif' }}>
-                      {selectedCourse.price === 0 ? 'FREE' : `$${selectedCourse.price}`}
+                    <span style={{ fontSize: 26, fontWeight: 800, color: '#10b981', fontFamily: 'Space Grotesk, sans-serif' }}>
+                      FREE
                     </span>
                     {selectedCourse.originalPrice && (
                       <span style={{ fontSize: 14, color: '#64748b', textDecoration: 'line-through' }}>
@@ -1021,7 +1022,7 @@ export default function Courses() {
                     boxShadow: '0 4px 18px rgba(0, 132, 255, 0.4)',
                   }}
                 >
-                  {selectedCourse.price === 0 ? 'Enroll Free' : 'Buy Now'}
+                  Enroll Free
                 </button>
               </div>
 
@@ -1164,7 +1165,7 @@ export default function Courses() {
                     gap: 8,
                   }}
                 >
-                  <span>{selectedCourse.price === 0 ? 'Start Free Course' : `Enroll Now — $${selectedCourse.price}`}</span>
+                  <span>Start Free Course →</span>
                   <MdArrowForward />
                 </button>
 
@@ -1293,8 +1294,8 @@ export default function Courses() {
                   <div style={{ fontSize: 15, fontWeight: 700, color: '#ffffff', marginBottom: 4 }}>
                     {selectedCourse.title}
                   </div>
-                  <div style={{ fontSize: 13, color: '#38bdf8' }}>
-                    {selectedCourse.price === 0 ? 'Free Enrollment' : `Total: $${selectedCourse.price}`}
+                  <div style={{ fontSize: 13, color: '#10b981', fontWeight: 700 }}>
+                    ✓ Free Enrollment — No Payment Required
                   </div>
                 </div>
 

@@ -11,54 +11,40 @@ const AuthContext=createContext();
 
 export const AuthProvider=({children})=>{
 
-const [user,setUser]=useState(null);
+const [user, setUser] = useState(() => {
+  try {
+    const saved = localStorage.getItem("user");
+    return saved ? JSON.parse(saved) : null;
+  } catch (e) {
+    return null;
+  }
+});
 
-const [loading,setLoading]=useState(true);
-
+const [loading, setLoading] = useState(false);
 
 // Load User
+useEffect(() => {
+  const loadUser = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        setLoading(false);
+        return;
+      }
+      const res = await api.get("/auth/me");
+      if (res.data?.success && res.data?.user) {
+        setUser(res.data.user);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+      }
+    } catch (error) {
+      console.warn("Could not refresh user session:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-useEffect(()=>{
-
-const loadUser=async()=>{
-
-try{
-
-const token=localStorage.getItem("token");
-
-if(!token){
-
-setLoading(false);
-
-return;
-
-}
-
-const res=await api.get("/auth/me");
-
-setUser(res.data.user);
-
-}catch(error){
-
-localStorage.removeItem("token");
-
-localStorage.removeItem("user");
-
-setUser(null);
-
-}
-
-finally{
-
-setLoading(false);
-
-}
-
-};
-
-loadUser();
-
-},[]);
+  loadUser();
+}, []);
 
 
 // Login
